@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dream Spaces Design</title>
+  <meta name="description" content="Dream Spaces Design offers interior design, remodeling, and vacation home transformations in Brevard County and Central Florida." />
+  <style>
+    :root {
+      --bg: #d9d3c9;
+      --bg-soft: #ece7df;
+      --text: #525a59;
+      --text-dark: #353c3c;
+      --line: rgba(82,90,89,.18);
+      --card: #f5f1ea;
+      --accent: #6b7472;
+      --gold: #b28a4a;
+      --white: #ffffff;
+      --shadow: 0 18px 40px rgba(53,60,60,.08);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text-dark);
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+      line-height: 1.55;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1180px, calc(100% - 28px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(236,231,223,.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      gap: 18px;
+    }
+    .nav .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: .95rem;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    .nav .brand img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--line);
+    }
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--text);
+      font-size: .92rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      padding: 72px 0 52px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 28px;
+      align-items: center;
+    }
+    .hero-copy {
+      padding: 18px 0;
+    }
+    .kicker {
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .28em;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    h1 {
+      margin: 0 0 14px;
+      font-weight: 400;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: .98;
+      letter-spacing: .02em;
+      color: var(--text-dark);
+    }
+    .tagline {
+      font-size: 1rem;
+      letter-spacing: .34em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin: 14px 0 22px;
+    }
+    .hero p {
+      max-width: 620px;
+      font-size: 1.04rem;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 14px 22px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .82rem;
+      border: 1px solid var(--accent);
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+    }
+    .btn-secondary {
+      color: var(--accent);
+      background: transparent;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,.5);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .hero-card img {
+      width: 100%;
+      height: 560px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    section {
+      padding: 34px 0 54px;
+    }
+    .section-head {
+      margin-bottom: 24px;
+      max-width: 760px;
+    }
+    .section-title {
+      margin: 0 0 8px;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 400;
+      letter-spacing: .02em;
+      color: var(--text-dark);
+    }
+    .section-sub {
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    .about-card, .contact-card {
+      background: rgba(255,255,255,.52);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .service {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    .service h3 {
+      margin: 0 0 10px;
+      font-weight: 500;
+      font-size: 1.25rem;
+      letter-spacing: .01em;
+    }
+    .service p { color: var(--text); margin: 0 0 12px; }
+    .service ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--text);
+    }
+    .service li { margin-bottom: 8px; }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .gallery figure {
+      margin: 0;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .gallery .wide { grid-column: span 8; height: 420px; }
+    .gallery .tall { grid-column: span 4; height: 420px; }
+    .gallery .half { grid-column: span 6; height: 360px; }
+    .gallery .third { grid-column: span 4; height: 320px; }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .project-copy {
+      background: rgba(255,255,255,.52);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    .project-copy h3 {
+      margin: 0 0 10px;
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+    .project-copy p, .project-copy li { color: var(--text); }
+    .project-copy ul { margin: 12px 0 0; padding-left: 18px; }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+    .process .step {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+    .step .num {
+      color: var(--gold);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      margin-bottom: 10px;
+    }
+    .step h4 {
+      margin: 0 0 8px;
+      font-weight: 500;
+      font-size: 1.02rem;
+    }
+    .step p { margin: 0; color: var(--text); font-size: .96rem; }
+
+    .areas {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .area {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 24px;
+    }
+    .contact-box {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+    }
+    .contact-box p {
+      margin: 8px 0;
+      color: var(--text);
+    }
+
+    footer {
+      padding: 30px 0 48px;
+      text-align: center;
+      color: var(--text);
+      font-size: .92rem;
+      letter-spacing: .04em;
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid, .services, .project-grid, .process, .areas, .contact-card {
+        grid-template-columns: 1fr;
+      }
+      .gallery .wide, .gallery .tall, .gallery .half, .gallery .third {
+        grid-column: span 12;
+        height: 320px;
+      }
+      .hero-card img { height: 420px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container nav">
+      <a href="#home" class="brand">
+        <img src="assets/logo.jpg" alt="Dream Spaces Design logo" />
+        <span>Dream Spaces Design</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <div class="kicker">Interior Design • Vacation Homes • Remodeling</div>
+        <h1>Dream Spaces Design</h1>
+        <div class="tagline">Design • Remodel • Elevate</div>
+        <p>
+          Elegant, functional spaces tailored to each client’s lifestyle or investment goals.
+          We specialize in interior design, remodeling, and vacation home transformations across
+          Brevard County and Central Florida.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#contact">Book a Consultation</a>
+          <a class="btn btn-secondary" href="#projects">View Projects</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img src="assets/photo_10.jpeg" alt="Styled living and kitchen space by Dream Spaces Design" />
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">About Dream Spaces Design</div>
+        <h2 class="section-title">Spaces that feel elevated, purposeful, and beautifully finished.</h2>
+      </div>
+      <div class="about-card">
+        <p>
+          Dream Spaces Design specializes in interior design, remodeling, and vacation home transformations.
+          We create spaces that are elegant, functional, and tailored to each client’s lifestyle or investment goals.
+        </p>
+        <p>
+          Our services include vacation home design for Orlando rental properties as well as interior design and
+          remodeling for Brevard County homeowners.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">Our Services</div>
+        <h2 class="section-title">Thoughtful design for homes and high-impact properties.</h2>
+        <div class="section-sub">From turnkey rentals to local remodels, every project is built around beauty, comfort, and function.</div>
+      </div>
+      <div class="services">
+        <div class="service">
+          <h3>Vacation Home Design</h3>
+          <p>Turnkey furnishing and styling for short-term rental properties designed to maximize guest appeal.</p>
+          <ul>
+            <li>Vacation home transformations</li>
+            <li>Guest-focused layouts</li>
+            <li>Durable furnishings and styling</li>
+            <li>Memorable, booking-friendly spaces</li>
+          </ul>
+        </div>
+        <div class="service">
+          <h3>Interior Design</h3>
+          <p>Furniture selection, space planning, lighting, décor, and styling for elegant everyday living.</p>
+          <ul>
+            <li>Room-by-room design concepts</li>
+            <li>Finish and fixture guidance</li>
+            <li>Furnishing and styling</li>
+            <li>Space planning</li>
+          </ul>
+        </div>
+        <div class="service">
+          <h3>Remodeling</h3>
+          <p>Kitchen, bathroom, and full home renovations designed to transform spaces with cohesive visual direction.</p>
+          <ul>
+            <li>Kitchen remodels</li>
+            <li>Bathroom remodels</li>
+            <li>Lighting and finish updates</li>
+            <li>Design support for contractors</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">Featured Work</div>
+        <h2 class="section-title">A refined, warm, modern point of view.</h2>
+      </div>
+      <div class="gallery">
+        <figure class="wide"><img src="assets/photo_02.jpeg" alt="Dining area with chandelier and framed art" /></figure>
+        <figure class="tall"><img src="assets/photo_07.jpeg" alt="Gold pendants and kitchen faucet detail" /></figure>
+        <figure class="half"><img src="assets/photo_03.jpeg" alt="Kitchen remodel with white cabinetry and gold details" /></figure>
+        <figure class="half"><img src="assets/photo_11.jpeg" alt="Modern staircase and entry view after design update" /></figure>
+        <figure class="third"><img src="assets/photo_12.jpeg" alt="Powder room design with marble sink and brass accents" /></figure>
+        <figure class="third"><img src="assets/photo_09.jpeg" alt="Entry vignette with art and flowers" /></figure>
+        <figure class="third"><img src="assets/photo_16.jpeg" alt="Powder room vanity detail" /></figure>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container project-grid">
+      <div class="project-copy">
+        <div class="kicker">Project 01</div>
+        <h3>Modern Living Space</h3>
+        <p>
+          Clean modern living space designed to maximize comfort and style through neutral tones, layered textures, statement lighting, and warm metallic details.
+        </p>
+      </div>
+      <div class="gallery">
+        <figure class="half"><img src="assets/photo_10.jpeg" alt="Wide view of living room and kitchen" /></figure>
+        <figure class="half"><img src="assets/photo_01.jpeg" alt="Dining detail with art wall and floral centerpiece" /></figure>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container project-grid">
+      <div class="gallery">
+        <figure class="half"><img src="assets/photo_03.jpeg" alt="Kitchen remodel bright view" /></figure>
+        <figure class="half"><img src="assets/photo_04.jpeg" alt="Kitchen remodel warm low-light view" /></figure>
+      </div>
+      <div class="project-copy">
+        <div class="kicker">Project 02</div>
+        <h3>Kitchen Remodel</h3>
+        <p>
+          Contemporary kitchen featuring custom cabinetry, fresh finishes, improved lighting, and functional layout upgrades that create a polished and welcoming heart of the home.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container project-grid">
+      <div class="project-copy">
+        <div class="kicker">Project 03</div>
+        <h3>Primary Bathroom Design</h3>
+        <p>
+          Elegant bathroom renovation featuring minimalist fixtures, rich color contrast, marble surfaces, and brass accents for a boutique, elevated finish.
+        </p>
+      </div>
+      <div class="gallery">
+        <figure class="half"><img src="assets/photo_17.jpeg" alt="Powder bathroom with mirror and brass lighting" /></figure>
+        <figure class="half"><img src="assets/photo_18.jpeg" alt="Close-up of powder bathroom vanity and mirror" /></figure>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container project-grid">
+      <div class="gallery">
+        <figure class="half"><img src="assets/photo_01.jpeg" alt="Dining table styling with chandelier" /></figure>
+        <figure class="half"><img src="assets/photo_06.jpeg" alt="Lighting detail over kitchen island" /></figure>
+      </div>
+      <div class="project-copy">
+        <div class="kicker">Project 04</div>
+        <h3>Dining & Entertaining Space</h3>
+        <p>
+          Sophisticated dining and gathering areas designed for hosting, featuring warm lighting, natural materials, balanced proportions, and curated finishing touches.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container project-grid">
+      <div class="project-copy">
+        <div class="kicker">Project 05</div>
+        <h3>Detail Design</h3>
+        <p>
+          Attention to detail through lighting, materials, textures, custom accents, and carefully styled moments that bring the entire project together.
+        </p>
+        <ul>
+          <li>Inviting living spaces</li>
+          <li>Durable finishes</li>
+          <li>Family-friendly layouts</li>
+          <li>Elegant decorative layers</li>
+        </ul>
+      </div>
+      <div class="gallery">
+        <figure class="third"><img src="assets/photo_05.jpeg" alt="Statement chandelier close-up" /></figure>
+        <figure class="third"><img src="assets/photo_08.jpeg" alt="Gold wall sconce detail" /></figure>
+        <figure class="third"><img src="assets/photo_15.jpeg" alt="Brass and crystal doorknob detail" /></figure>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">Our Design Process</div>
+        <h2 class="section-title">Clear from first conversation to final styling.</h2>
+      </div>
+      <div class="process">
+        <div class="step">
+          <div class="num">01</div>
+          <h4>Consultation</h4>
+          <p>We discuss your property, goals, style, and budget.</p>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <h4>Concept Development</h4>
+          <p>We build the visual direction and overall vision.</p>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <h4>Design Planning</h4>
+          <p>Layouts, finishes, furnishings, and selections take shape.</p>
+        </div>
+        <div class="step">
+          <div class="num">04</div>
+          <h4>Procurement & Coordination</h4>
+          <p>We source pieces and coordinate the next steps.</p>
+        </div>
+        <div class="step">
+          <div class="num">05</div>
+          <h4>Installation & Styling</h4>
+          <p>The final space is finished, layered, and elevated.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">Service Areas</div>
+        <h2 class="section-title">Serving Brevard County & Central Florida</h2>
+      </div>
+      <div class="areas">
+        <div class="area">
+          <h3>Brevard County</h3>
+          <p>Melbourne • Viera • Indialantic • Satellite Beach • Palm Bay</p>
+        </div>
+        <div class="area">
+          <h3>Central Florida</h3>
+          <p>Orlando vacation homes and short-term rental properties.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="contact-card">
+        <div>
+          <div class="kicker">Contact</div>
+          <h2 class="section-title">Let’s create your dream space.</h2>
+          <p class="section-sub">Interior design, remodeling, and vacation home design.</p>
+          <p class="section-sub"><strong>Falamos Portugues</strong></p>
+        </div>
+        <div class="contact-box">
+          <p><strong>Dream Spaces Design</strong></p>
+          <p>Design • Remodel • Elevate</p>
+          <p><a href="mailto:dreamspaces321@gmail.com">dreamspaces321@gmail.com</a></p>
+          <p><a href="tel:+14075589301">(407) 558-9301</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Dream Spaces Design • Design • Remodel • Elevate
+  </footer>
+</body>
+</html>
